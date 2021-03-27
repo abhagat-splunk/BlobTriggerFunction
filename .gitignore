@@ -128,4 +128,10 @@ obj
 appsettings.json
 local.settings.json
 .python_packages
+
 .DS_Store
+host.json
+proxies.json
+BlobTrigger/function.json
+BlobTrigger/readme.md
+BlobTrigger/sample.dat

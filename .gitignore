@@ -133,3 +133,6 @@ local.settings.json
 host.json
 proxies.json
 .vscode/
+BlobTrigger/function.json
+BlobTrigger/sample.dat
+BlobTrigger/readme.md

@@ -10,7 +10,7 @@
             }
         },
         "storageAccountName": {
-            "defaultValue": "<StorageContainerName>",
+            "defaultValue": "splkmscs",
             "type": "String"
         },
         "storageAccountType": {
@@ -30,14 +30,15 @@
             "type": "String"
         },
         "githubRepoBranch": {
-            "defaultValue": "master",
+            "defaultValue": "develop",
             "type": "String"
         },
         "path": {
+            "defaultValue": "test/{name}",
             "type": "String"
         },
         "storageAccountID": {
-            "defaultValue": "<ResourceIdForStorageContainer>",
+            "defaultValue": "/subscriptions/287c0cb5-0b87-4f89-8277-74faa50379e7/resourceGroups/AzureFunctions/providers/Microsoft.Storage/storageAccounts/splkmscs/blobServices/default",
             "type": "String"
         }
     },

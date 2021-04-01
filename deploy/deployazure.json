@@ -13,18 +13,6 @@
             "defaultValue": "splkmscs",
             "type": "String"
         },
-        "storageAccountType": {
-            "defaultValue": "Standard_LRS",
-            "allowedValues": [
-                "Standard_LRS",
-                "Standard_GRS",
-                "Standard_RAGRS"
-            ],
-            "type": "String",
-            "metadata": {
-                "description": "Storage Account type"
-            }
-        },
         "githubRepoURL": {
             "defaultValue": "https://github.com/ani0989/BlobTriggerFunction.git",
             "type": "String"
@@ -60,15 +48,15 @@
                     "appSettings": [
                         {
                             "name": "AzureWebJobsDashboard",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(parameters('storageAccountID'),'2016-05-01-preview').key1)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(parameters('storageAccountID'),'2015-08-01').key1)]"
                         },
                         {
                             "name": "AzureWebJobsStorage",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(parameters('storageAccountID'),'2016-05-01-preview').key1)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(parameters('storageAccountID'),'2015-08-01').key1)]"
                         },
                         {
                             "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(parameters('storageAccountID'),'2016-05-01-preview').key1)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(parameters('storageAccountID'),'2015-08-01').key1)]"
                         },
                         {
                             "name": "WEBSITE_CONTENTSHARE",

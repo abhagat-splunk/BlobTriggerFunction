@@ -132,3 +132,4 @@ local.settings.json
 .DS_Store
 host.json
 proxies.json
+.vscode

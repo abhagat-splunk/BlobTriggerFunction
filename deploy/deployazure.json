@@ -26,7 +26,7 @@
             "type": "String"
         },
         "storageAccountID": {
-            "defaultValue": "/subscriptions/287c0cb5-0b87-4f89-8277-74faa50379e7/resourceGroups/AzureFunctions/providers/Microsoft.Storage/storageAccounts/splkmscs/blobServices/default",
+            "defaultValue": "/subscriptions/287c0cb5-0b87-4f89-8277-74faa50379e7/resourceGroups/mscsblobtrigger/providers/Microsoft.Web/sites/MSCSBlobTrigger",
             "type": "String"
         }
     },
@@ -48,15 +48,15 @@
                     "appSettings": [
                         {
                             "name": "AzureWebJobsDashboard",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(parameters('storageAccountID'),'2015-08-01').key1)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(parameters('storageAccountID'),'2016-05-01').key1)]"
                         },
                         {
                             "name": "AzureWebJobsStorage",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(parameters('storageAccountID'),'2015-08-01').key1)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(parameters('storageAccountID'),'2016-05-01').key1)]"
                         },
                         {
                             "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(parameters('storageAccountID'),'2015-08-01').key1)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(parameters('storageAccountID'),'2016-05-01').key1)]"
                         },
                         {
                             "name": "WEBSITE_CONTENTSHARE",

@@ -105,13 +105,6 @@
                             "name": "myblob",
                             "path": "test/{name}",
                             "connection": "AzureWebJobsStorage"
-                        },
-                        {
-                            "type": "eventHub",
-                            "name": "$return",
-                            "eventHubName": "splunkeventhubfunctionseventhub",
-                            "connection": "MyEventHubSendAppSetting",
-                            "direction": "out"
                         }
                     ]
                 }

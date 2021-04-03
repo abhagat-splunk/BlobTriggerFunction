@@ -67,18 +67,6 @@
                             "value": "python"
                         }
                     ]
-                },
-                "config": {
-                    "scriptFile": "__init__.py",
-                    "bindings": [
-                        {
-                            "type": "blobTrigger",
-                            "direction": "in",
-                            "name": "myblob",
-                            "path": "PATH",
-                            "connection": "AzureWebJobsStorage"
-                        }
-                    ]
                 }
             },
             "resources": [
@@ -96,6 +84,38 @@
                     }
                 }
             ]
+        },
+        {
+            "type": "Microsoft.Web/sites/functions",
+            "apiVersion": "2018-11-01",
+            "name": "[concat(variables('functionAppName'), '/BlobTrigger')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
+            ],
+            "properties": {
+                "config": {
+                    "files": {
+                        "__init__.py": "import logging\nimport datetime\nimport azure.functions as func\n\n\ndef main(myblob: func.InputStream):\n    timestamp = datetime.datetime.utcnow()\n    logging.info(f\"Python blob trigger function processed blob \\n\"\n                 f\"Name: {myblob.name}\\n\"\n                 f\"Blob Size: {myblob.length} bytes\\n\"\n                 f\"Blob Content: {myblob.read()}\"\n                 )\n    return \\'{}\\'.format(myblob.read())"
+                    },
+                    "scriptFile": "__init__.py",
+                    "bindings": [
+                        {
+                            "type": "blobTrigger",
+                            "direction": "in",
+                            "name": "myblob",
+                            "path": "test/{name}",
+                            "connection": "AzureWebJobsStorage"
+                        },
+                        {
+                            "type": "eventHub",
+                            "name": "$return",
+                            "eventHubName": "splunkeventhubfunctionseventhub",
+                            "connection": "MyEventHubSendAppSetting",
+                            "direction": "out"
+                        }
+                    ]
+                }
+            }
         }
     ]
 }

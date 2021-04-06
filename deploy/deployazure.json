@@ -100,7 +100,7 @@
                             "type": "blobTrigger",
                             "direction": "in",
                             "name": "myblob",
-                            "path": "test/{name}",
+                            "path": "[variables('pathName')]",
                             "connection": "AzureWebJobsStorage"
                         }
                     ],

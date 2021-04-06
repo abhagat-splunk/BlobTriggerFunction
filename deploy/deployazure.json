@@ -94,9 +94,6 @@
             ],
             "properties": {
                 "config": {
-                    "files": {
-                        "__init__.py": "import logging\nimport datetime\nimport azure.functions as func\n\n\ndef main(myblob: func.InputStream):\n    timestamp = datetime.datetime.utcnow()\n    logging.info(f\"Python blob trigger function processed blob \\n\"\n                 f\"Name: {myblob.name}\\n\"\n                 f\"Blob Size: {myblob.length} bytes\\n\"\n                 f\"Blob Content: {myblob.read()}\"\n                 )\n    return \\'{}\\'.format(myblob.read())"
-                    },
                     "scriptFile": "__init__.py",
                     "bindings": [
                         {
@@ -108,6 +105,9 @@
                         }
                     ],
                     "disabled": false
+                },
+                "files": {
+                    "__init__.py": "import logging\nimport datetime\nimport azure.functions as func\n\n\ndef main(myblob: func.InputStream):\n    timestamp = datetime.datetime.utcnow()\n    logging.info(f\"Python blob trigger function processed blob \\n\"\n                 f\"Name: {myblob.name}\\n\"\n                 f\"Blob Size: {myblob.length} bytes\\n\"\n                 f\"Blob Content: {myblob.read()}\"\n                 )\n    return \\'{}\\'.format(myblob.read())"
                 }
             }
         }

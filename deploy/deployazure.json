@@ -29,7 +29,9 @@
     "variables": {
         "functionAppName": "[parameters('appName')]",
         "storageAccountName": "[parameters('storageAccountName')]",
-        "pathName": "[parameters('path')]"
+        "pathName": "[parameters('path')]",
+        "MyEventHubSendAppSetting": "Endpoint=sb://splunkeventhubfunctions.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=fvqX3O/1MEiCHjC/WpWxX5EtIoRooCf+fwtbLHzVgJo=",
+        "eventHubName": "splunkeventhubfunctionseventhub"
     },
     "functions": [],
     "resources": [
@@ -102,6 +104,13 @@
                             "name": "myblob",
                             "path": "[variables('pathName')]",
                             "connection": "AzureWebJobsStorage"
+                        },
+                        {
+                            "type": "eventHub",
+                            "name": "$return",
+                            "eventHubName": "[variables('eventHubName')]",
+                            "connection": "[variables('MyEventHubSendAppSetting')]",
+                            "direction": "out"
                         }
                     ],
                     "disabled": false

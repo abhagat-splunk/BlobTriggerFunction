@@ -102,11 +102,12 @@
                         {
                             "type": "blobTrigger",
                             "direction": "in",
-                            "name": "blobTrigger",
+                            "name": "blobFile",
                             "path": "test/{name}",
                             "connection": "AzureWebJobsStorage"
                         }
-                    ]
+                    ],
+                    "disabled": false
                 }
             }
         }

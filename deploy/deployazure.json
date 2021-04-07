@@ -109,7 +109,8 @@
                     "properties": {
                         "RepoUrl": "[parameters('githubRepoURL')]",
                         "branch": "[parameters('githubRepoBranch')]",
-                        "IsManualIntegration": true
+                        "IsManualIntegration": true,
+                        "publishRunbook": true
                     }
                 }
             ]

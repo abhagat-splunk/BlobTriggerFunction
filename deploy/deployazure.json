@@ -14,7 +14,7 @@
             "type": "String"
         },
         "githubRepoURL": {
-            "defaultValue": "https://github.com/ani0989/BlobTriggerFunction.git",
+            "defaultValue": "https://github.com/xynazog/BlobTriggerFunction.git",
             "type": "String"
         },
         "githubRepoBranch": {

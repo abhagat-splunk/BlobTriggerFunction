@@ -24,13 +24,25 @@
         "path": {
             "defaultValue": "test/{name}",
             "type": "String"
+        },
+        "eventHubNameSpace": {
+            "defaultValue": "Name of the Eventhub Namespace",
+            "type": "String"
+        },
+        "eventHub": {
+            "defaultValue": "Name of the Eventhub",
+            "type": "String"
         }
     },
     "variables": {
         "functionAppName": "[parameters('appName')]",
         "storageAccountName": "[parameters('storageAccountName')]",
         "pathName": "[parameters('path')]",
-        "eventHubName": "splunkeventhubfunctionseventhub"
+        "eventHubNSName": "[parameters('eventHubNameSpace')]",
+        "defaultSASKeyName": "RootManageSharedAccessKey",
+        "authRuleResourceId": "[resourceId('Microsoft.EventHub/namespaces/authorizationRules', variables('eventHubNSName'), variables('defaultSASKeyName'))]",
+        "apiVersion": "2015-08-01",
+        "eventHubName": "[parameters('eventHub')]"
     },
     "functions": [],
     "resources": [
@@ -69,7 +81,11 @@
                         },
                         {
                             "name": "MyEventHubSendAppSetting",
-                            "value": "Endpoint=sb://splunkeventhubfunctions.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=fvqX3O/1MEiCHjC/WpWxX5EtIoRooCf+fwtbLHzVgJo="
+                            "value": "[listkeys(variables('authRuleResourceId'), variables('apiVersion')).primaryKey]"
+                        },
+                        {
+                            "name": "Project",
+                            "value": "trigger"
                         }
                     ]
                 }
@@ -89,39 +105,6 @@
                     }
                 }
             ]
-        },
-        {
-            "type": "Microsoft.Web/sites/functions",
-            "apiVersion": "2018-11-01",
-            "name": "[concat(variables('functionAppName'), '/BlobTrigger')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
-            ],
-            "properties": {
-                "config": {
-                    "scriptFile": "__init__.py",
-                    "bindings": [
-                        {
-                            "type": "blobTrigger",
-                            "direction": "in",
-                            "name": "myblob",
-                            "path": "[variables('pathName')]",
-                            "connection": "AzureWebJobsStorage"
-                        },
-                        {
-                            "type": "eventHub",
-                            "name": "$return",
-                            "eventHubName": "[variables('eventHubName')]",
-                            "connection": "MyEventHubSendAppSetting",
-                            "direction": "out"
-                        }
-                    ],
-                    "disabled": false
-                },
-                "files": {
-                    "__init__.py": "import logging\nimport datetime\nimport azure.functions as func\n\n\ndef main(myblob: func.InputStream):\n    timestamp = datetime.datetime.utcnow()\n    logging.info(f\"Python blob trigger function processed blob \\n\"\n                 f\"Name: {myblob.name}\\n\"\n                 f\"Blob Size: {myblob.length} bytes\\n\"\n                 f\"Blob Content: {myblob.read()}\"\n                 )\n    return \\'{}\\'.format(myblob.read())"
-                }
-            }
         }
     ]
 }

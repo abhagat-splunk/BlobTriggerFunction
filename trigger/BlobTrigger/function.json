@@ -1,0 +1,20 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "type": "blobTrigger",
+      "direction": "in",
+      "name": "myblob",
+      "path": "[variables('pathName')]",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "type": "eventHub",
+      "name": "$return",
+      "eventHubName": "[variables('eventHubName')]",
+      "connection": "MyEventHubSendAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}

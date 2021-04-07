@@ -130,9 +130,4 @@ local.settings.json
 .python_packages
 
 .DS_Store
-host.json
 proxies.json
-.vscode/
-BlobTrigger/function.json
-BlobTrigger/sample.dat
-BlobTrigger/readme.md

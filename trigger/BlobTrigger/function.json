@@ -5,13 +5,13 @@
       "type": "blobTrigger",
       "direction": "in",
       "name": "myblob",
-      "path": "pathName",
+      "path": "%pathName%",
       "connection": "AzureWebJobsStorage"
     },
     {
       "type": "eventHub",
       "name": "$return",
-      "eventHubName": "eventHubName",
+      "eventHubName": "%eventHubName%",
       "connection": "MyEventHubSendAppSetting",
       "direction": "out"
     }

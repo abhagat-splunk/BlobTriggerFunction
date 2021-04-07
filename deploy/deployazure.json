@@ -86,6 +86,14 @@
                         {
                             "name": "Project",
                             "value": "trigger"
+                        },
+                        {
+                            "name": "pathName",
+                            "value": "[variables('pathName')]"
+                        },
+                        {
+                            "name": "eventHubName",
+                            "value": "[variables('eventHubName')]"
                         }
                     ]
                 }

@@ -81,7 +81,7 @@
                         },
                         {
                             "name": "MyEventHubSendAppSetting",
-                            "value": "[concat('Endpoint=sb://', variables('eventHubNSName'), '.servicebus.windows.net/;SharedAccessKeyName=', variables('defaultSASKeyName'), ';SharedAccessKey=', listkeys(variables('authRuleResourceId'), variables('apiVersion')).primaryKey)]"
+                            "value": "[concat('Endpoint=sb://', toLower(variables('eventHubNSName')), '.servicebus.windows.net/;SharedAccessKeyName=', variables('defaultSASKeyName'), ';SharedAccessKey=', listkeys(variables('authRuleResourceId'), variables('apiVersion')).primaryKey)]"
                         },
                         {
                             "name": "Project",
